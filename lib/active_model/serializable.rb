@@ -10,6 +10,10 @@ module ActiveModel
       base.extend Utils
     end
 
+    def to_json(options={})
+      ActiveSupport::JSON.encode(self, options)
+    end
+
     def as_json(options={})
       instrument do
         if root = options.fetch(:root, json_key)
